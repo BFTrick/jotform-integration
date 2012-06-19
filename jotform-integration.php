@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: JotForm Integration
-Plugin URI: http://www.patrickrauland.com
+Plugin URI: https://github.com/BFTrick/jotform-integration
 Description: Integrate JotForm forms with your WordPress-powered site.
 Author: Patrick Rauland
 Author URI: http://www.patrickrauland.com
