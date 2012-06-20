@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: BFTrick
-Donate link: http://example.com/
-Tags: form, jotform
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=56EDEHK9PMWWC
+Tags: jotform, form, jot
 Requires at least: 3.0
 Tested up to: 3.4
 Stable tag: 1.0
