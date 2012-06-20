@@ -19,7 +19,7 @@ function jotform_func( $atts ){
 	), $atts ) );
 
 	if($id==-1){
-		return "<p style='color: red;'>JotForm Integration Error.</p>";
+		return "<p style='color: red;'>JotForm Integration Error - missing form ID.</p>";
 	}
 
 	//print script
