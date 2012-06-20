@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: jotform, form, jot
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,9 +13,11 @@ JotForm Integration is a Wordpress Plugin that helps the user include forms from
 
 == Description ==
 
-JotForm Integration is a Wordpress Plugin that helps the user include forms from [JotForm](http://www.jotform.com/). Before you use this you will obviously need to create a form in JotForm. After including the `[jotform]` shortcode you should be able to continue to make changes to JotForm and have them mirrored on your site. Now you (the web dude) don't have to make simple form edits. You can pass that off to the client.
+JotForm Integration is a Wordpress Plugin that helps the user include forms from [JotForm](http://www.jotform.com/). Now you, the web dude, don't have to make simple form edits. You can give the client the JotForm credentials and let them go wild.
 
-If you have any suggestions for improvements please go to the [GitHub page](https://github.com/BFTrick/jotform-integration) and create some feature improvements.
+Before you can add a JotForm to your site you will obviously need to create a form in JotForm! After including the `[jotform]` shortcode you should be able to continue to make changes to JotForm and have them mirrored on your site. If you don't plan on making many changes you can turn on caching in the options panel.
+
+If you have any suggestions for improvements please go to the [GitHub page](https://github.com/BFTrick/jotform-integration) and create some features.
 
 
 == Installation ==
@@ -44,10 +46,16 @@ Are you sure you have the right form ID? If you have the wrong ID there won't be
 
 = I made changes to my JotForm and the changes aren't mirrored on my site. What's going on? =
 
-Your browser might be caching the JavaScript that pulls in the iframe. What you can do is append a query string to your form ID. So instead of entering `[jotform id=12345]` you could enter `[jotform id=12345?update-2012-06-19]`. The query string can be anything. As long as it is different from the previous query string your browser wont pull the cached copy.
+Your browser might be caching the JavaScript that pulls in the iframe. Make sure you have the `cache form` option turned off in the options panel.
+
+If that still isn't working you can append a query string to your form ID. So instead of entering `[jotform id=12345]` you could enter `[jotform id=12345?update-2012-06-19]`. The query string can be anything. As long as it is different from the previous query string your browser wont pull the cached copy.
 
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.1 =
+* Added options panel.
+* Added caching option.
+
+= 1.0.0 =
 * Initial upload.
