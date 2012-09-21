@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: BFTrick
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=56EDEHK9PMWWC
-Tags: jotform, form, jot
+Tags: jotform, form, jot, widget, shortcode
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,9 @@ JotForm Integration is a Wordpress Plugin that helps the user include forms from
 
 Before you can add a JotForm to your site you will obviously need to create a form in JotForm! After including the `[jotform]` shortcode you should be able to continue to make changes to JotForm and have them mirrored on your site. If you don't plan on making many changes you can turn on caching in the options panel.
 
-If you have any suggestions for improvements please go to the [GitHub page](https://github.com/BFTrick/jotform-integration) and create some features.
+As of version 1.1.0 there is now a widget available for you to use. Simply add the JotForm widget to the sidebar, enter the form ID and bingo, bango, bongo, you're done. Watch the magic happen.
+
+If you have any suggestions for improvements please go to the [GitHub page](https://github.com/BFTrick/jotform-integration) and create some issues. You can even edit the code yourself and submit a pull request. :)
 
 
 == Installation ==
@@ -44,12 +46,25 @@ Don't forget to include your JotForm form ID in the shortcode tag `[jotform id=X
 
 Are you sure you have the right form ID? If you have the wrong ID there won't be an error message it will just be empty. Sorry, that is just how JotForm works. Nothing I can do about that.
 
+= Can I put a JotForm in a sidebar? =
+
+Yes, I added a widget in version 1.1.0. You should be able to go to appearance > widgets page in the WordPress backend and select the JotForm widget from the list. Enter your form ID number in the field provided and let the plugin handle the rest. 
+
+= Widgets confuse me, can't I just put the shortcode into a widget? =
+
+No, WordPress has the option turned off by default.
+
 = I made changes to my JotForm and the changes aren't mirrored on my site. What's going on? =
 
 Your browser might be caching the JavaScript that pulls in the iframe. Make sure you have the `cache form` option turned off in the options panel.
 
 If that still isn't working you can append a query string to your form ID. So instead of entering `[jotform id=12345]` you could enter `[jotform id=12345?update-2012-06-19]`. The query string can be anything. As long as it is different from the previous query string your browser wont pull the cached copy.
 
+== Screenshots ==
+
+1. The Jotform shortcode being used on the edit page screen of the WordPress backend.
+2. The Jotform widget.
+3. The Jotform output on the sample page from a fresh WordPress install.
 
 == Changelog ==
 

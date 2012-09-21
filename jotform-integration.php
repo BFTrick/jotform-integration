@@ -5,17 +5,18 @@ Plugin URI: https://github.com/BFTrick/jotform-integration
 Description: Integrate JotForm forms with your WordPress-powered site.
 Author: Patrick Rauland
 Author URI: http://www.patrickrauland.com
-Version: 1.0.1
+Version: 1.1.0
 License: GPL2
 */
 
 
+
 /*----------------------------------------
-/ display jotform
+/ jotform output
 ----------------------------------------*/
 
 function jotform_init_func( $atts ){
-	//this function returns the jotform code
+	//this function handles the output for both the widget and the shortcode
 
 	//extract elements out of array & set defaults
 	extract( shortcode_atts( array(
@@ -39,14 +40,85 @@ function jotform_init_func( $atts ){
 	return "<script type='text/javascript' src='http://form.jotform.us/jsform/".$id."?".$queryString."'></script>";
 }
 
-//add the shortcode
-add_shortcode( 'jotform', 'jotform_init_func' );
+
+
+/*----------------------------------------
+/ jotform widget
+----------------------------------------*/
+
+class JotformWidget extends WP_Widget
+{
+	function JotformWidget()
+	{
+		//setting up the basic information for the widget
+
+		$widget_ops = array('classname' => 'JotformWidget', 'description' => 'Displays a Jotform form' );
+		$this->WP_Widget('JotformWidget', 'Jotform', $widget_ops);
+	}
+
+	function form($instance)
+	{
+		//this function handles the widget form in the WordPress backend
+
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
+		$title = $instance['title'];
+		$form_id = $instance['form_id'];
+		?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('form_id'); ?>">Form ID: <input class="widefat" id="<?php echo $this->get_field_id('form_id'); ?>" name="<?php echo $this->get_field_name('form_id'); ?>" type="text" value="<?php echo attribute_escape($form_id); ?>" /></label></p>
+		<?php
+	}
+
+	function update($new_instance, $old_instance)
+	{
+		//this funciton handles the updating of the data after the widget has been manipulated in the WordPress backend
+
+		$instance = $old_instance;
+		$instance['title'] = $new_instance['title'];
+		$instance['form_id'] = strip_tags($new_instance['form_id']);
+
+		return $instance;
+	}
+
+	function widget($args, $instance)
+	{
+		//this function handles all of the front end display of the widget
+
+		extract($args, EXTR_SKIP);
+
+		$form_id = $instance['form_id'];
+
+		echo $before_widget;
+		$title = empty($instance['title']) ? ' ' : apply_filters('widget_title', $instance['title']);
+
+		//print the title
+		if (!empty($title))
+		{
+			echo $before_title . $title . $after_title;;
+		}
+
+		//call the main jotform function to handle the output
+		$output = jotform_init_func(array("id"=>$form_id));
+		echo $output;
+
+		echo $after_widget;
+	}
+
+}
+add_action( 'widgets_init', create_function('', 'return register_widget("JotformWidget");') );
 
 
 
 /*----------------------------------------
-/ add the admin options page & options
+/ jotform shortcode
 ----------------------------------------*/
+
+//add the shortcode
+add_shortcode( 'jotform', 'jotform_init_func' );
+
+
+/* add the admin options page & options */
+
 
 // add the admin options page
 add_action('admin_menu', 'jotform_admin_add_page');
