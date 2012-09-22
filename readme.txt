@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: jotform, form, jot, widget, shortcode
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,10 @@ Yes, I added a widget in version 1.1.0. You should be able to go to appearance >
 
 No, WordPress has the option turned off by default.
 
+= Ok, so I put the form in the sidebar but it looks terrible. Is there anything you can do to fix it? =
+
+Not a thing. The form is pulled in with an iframe meaning that I can't touch the CSS inside the iframe. You will have to modify your form (try top aligned labels instead of left aligned labels) or your template to get it to fit. The other thing you can do is not put the form in the sidebar. :)
+
 = I made changes to my JotForm and the changes aren't mirrored on my site. What's going on? =
 
 Your browser might be caching the JavaScript that pulls in the iframe. Make sure you have the `cache form` option turned off in the options panel.
@@ -67,6 +71,12 @@ If that still isn't working you can append a query string to your form ID. So in
 3. The Jotform output on the sample page from a fresh WordPress install.
 
 == Changelog ==
+
+= 1.1.1 =
+* Updated readme file (whoops! =D)
+
+= 1.1.0 =
+* Added widget
 
 = 1.0.1 =
 * Added options panel.

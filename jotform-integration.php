@@ -5,7 +5,7 @@ Plugin URI: https://github.com/BFTrick/jotform-integration
 Description: Integrate JotForm forms with your WordPress-powered site.
 Author: Patrick Rauland
 Author URI: http://www.patrickrauland.com
-Version: 1.1.0
+Version: 1.1.1
 License: GPL2
 */
 
@@ -53,7 +53,7 @@ class JotformWidget extends WP_Widget
 		//setting up the basic information for the widget
 
 		$widget_ops = array('classname' => 'JotformWidget', 'description' => 'Displays a Jotform form' );
-		$this->WP_Widget('JotformWidget', 'Jotform', $widget_ops);
+		$this->WP_Widget('JotformWidget', 'JotForm', $widget_ops);
 	}
 
 	function form($instance)
