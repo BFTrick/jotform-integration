@@ -71,6 +71,10 @@ svn copy trunk/ tags/$NEWVERSION1/
 cd $SVNPATH/tags/$NEWVERSION1
 svn commit --username=$SVNUSER -m "Tagging version $NEWVERSION1"
 
+echo "Moving assets"
+rm -fr $SVNPATH/assets
+mv -f $SVNPATH/trunk/assets-wp-repo $SVNPATH/assets
+
 echo "Removing temporary directory $SVNPATH"
 rm -fr $SVNPATH/
 
