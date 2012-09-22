@@ -75,7 +75,7 @@ svn commit --username=$SVNUSER -m "Tagging version $NEWVERSION1"
 echo "Moving assets-wp-repo"
 rm -fr $SVNPATH/assets
 mv -f $SVNPATH/trunk/assets-wp-repo $SVNPATH
-mv -f $SVNPATH/assets-wp-repo $SVNPATH/trunk/assets
+mv -f $SVNPATH/assets-wp-repo $SVNPATH/assets
 
 echo "Removing temporary directory $SVNPATH"
 rm -fr $SVNPATH/
