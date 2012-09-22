@@ -72,6 +72,9 @@ If that still isn't working you can append a query string to your form ID. So in
 
 == Changelog ==
 
+= 1.1.2 =
+* Adding WordPress Assets
+
 = 1.1.1 =
 * Updated readme file (whoops! =D)
 
