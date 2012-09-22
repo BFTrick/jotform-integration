@@ -59,10 +59,17 @@ README.md
 .git
 .gitignore" "$SVNPATH/trunk/"
 
-echo "Changing directory to SVN and committing to trunk"
+echo "Changing directory to SVN"
 cd $SVNPATH/trunk/
 # Add all new files that are not set to be ignored
 svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2}' | xargs svn add
+
+echo "Moving assets-wp-repo"
+rm -fr $SVNPATH/assets
+mv -f $SVNPATH/trunk/assets-wp-repo $SVNPATH
+mv -f $SVNPATH/assets-wp-repo $SVNPATH/trunk/assets
+
+echo "committing to trunk"
 svn commit --username=$SVNUSER -m "$COMMITMSG"
 
 echo "Creating new SVN tag & committing it"
@@ -70,10 +77,6 @@ cd $SVNPATH
 svn copy trunk/ tags/$NEWVERSION1/
 cd $SVNPATH/tags/$NEWVERSION1
 svn commit --username=$SVNUSER -m "Tagging version $NEWVERSION1"
-
-echo "Moving assets"
-rm -fr $SVNPATH/assets
-mv -f $SVNPATH/trunk/assets-wp-repo $SVNPATH
 
 echo "Removing temporary directory $SVNPATH"
 rm -fr $SVNPATH/
