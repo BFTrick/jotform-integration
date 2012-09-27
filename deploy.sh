@@ -62,8 +62,8 @@ assets-wp-repo" "$SVNPATH/trunk/"
 
 echo "Moving assets-wp-repo"
 rm -fr $SVNPATH/assets
-mv -f $SVNPATH/trunk/assets-wp-repo $SVNPATH
-mv -f $SVNPATH/assets-wp-repo $SVNPATH/assets
+cp -r $SVNPATH/trunk/assets-wp-repo $SVNPATH
+mv -fr $SVNPATH/assets-wp-repo $SVNPATH/assets
 
 echo "Changing directory to SVN"
 cd $SVNPATH/trunk/
