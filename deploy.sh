@@ -53,17 +53,17 @@ svn co $SVNURL $SVNPATH
 echo "Exporting the HEAD of master from git to the trunk of SVN"
 git checkout-index -a -f --prefix=$SVNPATH/trunk/
 
-echo "Moving assets-wp-repo"
-rm -fr $SVNPATH/assets
-mv -f $SVNPATH/trunk/assets-wp-repo $SVNPATH
-mv -f $SVNPATH/assets-wp-repo $SVNPATH/assets
-
-echo "Ignoring github specific files and deployment script"
+echo "Ignoring github specific, deployment script, and assets-wp-repo directory"
 svn propset svn:ignore "deploy.sh
 README.md
 .git
 .gitignore
 assets-wp-repo" "$SVNPATH/trunk/"
+
+echo "Moving assets-wp-repo"
+rm -fr $SVNPATH/assets
+mv -f $SVNPATH/trunk/assets-wp-repo $SVNPATH
+mv -f $SVNPATH/assets-wp-repo $SVNPATH/assets
 
 echo "Changing directory to SVN"
 cd $SVNPATH/trunk/
