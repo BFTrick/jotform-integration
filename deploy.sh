@@ -71,6 +71,10 @@ svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2}' | xargs svn a
 echo "committing to trunk"
 svn commit --username=$SVNUSER -m "$COMMITMSG"
 
+echo "Creating new wp-repo-assets"
+cd $SVNPATH/assets/
+svn commit --username=$SVNUSER -m "Updating wp-repo-assets"
+
 echo "Creating new SVN tag & committing it"
 cd $SVNPATH
 svn copy trunk/ tags/$NEWVERSION1/
