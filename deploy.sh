@@ -63,7 +63,7 @@ svn propset svn:ignore "deploy.sh
 README.md
 .git
 .gitignore
-assets-wp-repo/" "$SVNPATH/trunk/"
+assets-wp-repo" "$SVNPATH/trunk/"
 
 echo "Changing directory to SVN"
 cd $SVNPATH/trunk/
