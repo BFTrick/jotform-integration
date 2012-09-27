@@ -53,6 +53,11 @@ svn co $SVNURL $SVNPATH
 echo "Exporting the HEAD of master from git to the trunk of SVN"
 git checkout-index -a -f --prefix=$SVNPATH/trunk/
 
+echo "Moving assets-wp-repo"
+rm -fr $SVNPATH/assets
+mv -f $SVNPATH/trunk/assets-wp-repo $SVNPATH
+mv -f $SVNPATH/assets-wp-repo $SVNPATH/assets
+
 echo "Ignoring github specific files and deployment script"
 svn propset svn:ignore "deploy.sh
 README.md
@@ -71,11 +76,6 @@ cd $SVNPATH
 svn copy trunk/ tags/$NEWVERSION1/
 cd $SVNPATH/tags/$NEWVERSION1
 svn commit --username=$SVNUSER -m "Tagging version $NEWVERSION1"
-
-echo "Moving assets-wp-repo"
-rm -fr $SVNPATH/assets
-mv -f $SVNPATH/trunk/assets-wp-repo $SVNPATH
-mv -f $SVNPATH/assets-wp-repo $SVNPATH/assets
 
 echo "Removing temporary directory $SVNPATH"
 rm -fr $SVNPATH/
