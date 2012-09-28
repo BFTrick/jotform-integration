@@ -61,8 +61,7 @@ README.md
 
 echo "Moving assets-wp-repo"
 rm $SVNPATH/assets/*.png $SVNPATH/assets/*.jpg
-cp -r $SVNPATH/trunk/assets-wp-repo/* $SVNPATH/assets/
-#mv -f $SVNPATH/assets-wp-repo $SVNPATH/assets
+mv $SVNPATH/trunk/assets-wp-repo/* $SVNPATH/assets/
 rm -fr $SVNPATH/trunk/assets 
 
 echo "Changing directory to SVN"
