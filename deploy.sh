@@ -60,7 +60,7 @@ README.md
 .gitignore" "$SVNPATH/trunk/"
 
 echo "Moving assets-wp-repo"
-rm $SVNPATH/assets/*.png $SVNPATH/assets/*.jpg
+mkdir $SVNPATH/assets/
 mv $SVNPATH/trunk/assets-wp-repo/* $SVNPATH/assets/
 rm -fr $SVNPATH/trunk/assets 
 
