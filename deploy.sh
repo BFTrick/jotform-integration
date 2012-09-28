@@ -60,9 +60,10 @@ README.md
 .gitignore" "$SVNPATH/trunk/"
 
 echo "Moving assets-wp-repo"
-rm -fr $SVNPATH/assets
-cp -r $SVNPATH/trunk/assets-wp-repo $SVNPATH
-mv -f $SVNPATH/assets-wp-repo $SVNPATH/assets
+rm $SVNPATH/assets/*.png $SVNPATH/assets/*.jpg
+cp -r $SVNPATH/trunk/assets-wp-repo/* $SVNPATH/assets/
+#mv -f $SVNPATH/assets-wp-repo $SVNPATH/assets
+rm -fr $SVNPATH/trunk/assets 
 
 echo "Changing directory to SVN"
 cd $SVNPATH/trunk/
@@ -71,7 +72,7 @@ svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2}' | xargs svn a
 echo "committing to trunk"
 svn commit --username=$SVNUSER -m "$COMMITMSG"
 
-echo "Updating WP repo assets & committing	"
+echo "Updating WP plugin repo assets & committing"
 cd $SVNPATH/assets/
 svn commit --username=$SVNUSER -m "Updating wp-repo-assets"
 
@@ -82,6 +83,6 @@ cd $SVNPATH/tags/$NEWVERSION1
 svn commit --username=$SVNUSER -m "Tagging version $NEWVERSION1"
 
 echo "Removing temporary directory $SVNPATH"
-# rm -fr $SVNPATH/
+rm -fr $SVNPATH/
 
 echo "*** FIN ***"
