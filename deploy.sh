@@ -62,7 +62,9 @@ README.md
 echo "Moving assets-wp-repo"
 mkdir $SVNPATH/assets/
 mv $SVNPATH/trunk/assets-wp-repo/* $SVNPATH/assets/
-rm -fr $SVNPATH/trunk/assets 
+svn add $SVNPATH/assets/
+svn delete $SVNPATH/trunk/assets
+
 
 echo "Changing directory to SVN"
 cd $SVNPATH/trunk/
